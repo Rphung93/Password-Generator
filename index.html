@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Password Generator</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    nav {
+      background-color: #4CAF50;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    nav a {
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 20px 25px;
+      text-decoration: none;
+      font-size: 20px; 
+      font-weight: bold; 
+      margin: 0 auto; 
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    #password-box {
+      text-align: center;
+      border: 2px solid #4CAF50;
+      padding: 20px;
+      margin: 20px auto; 
+      width: 60%; 
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #generated-password {
+      display: none;
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#">Generate Password</a>
+  </nav>
+
+  <h1>Password Generator</h1>
+
+  <div id="password-box">
+    <button onclick="generatePassword()">Generate Password</button>
+    <div id="generated-password"></div>
+  </div>
+
+  <script>
+    function generatePassword() {
+      var passwordLength = 12; 
+      var allPossibleChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()-_=";
+
+      var generatedPassword = "";
+      for (var i = 0; i < passwordLength; i++) {
+        var randomIndex = Math.floor(Math.random() * allPossibleChars.length);
+        generatedPassword += allPossibleChars.charAt(randomIndex);
+      }
+
+      var generatedPasswordBox = document.getElementById('generated-password');
+      generatedPasswordBox.innerHTML = '<p>Your generated password is:</p><p>' + generatedPassword + '</p>';
+      generatedPasswordBox.style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
+
